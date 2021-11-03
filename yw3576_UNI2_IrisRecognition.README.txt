@@ -1,0 +1,26 @@
+
+I. Whole Logic of design
+
+For this project, we are provided with CASIA Iris Image Database (version 1.0) which contains 108 classes of eyes. Each class has been grouped into 2 folders, from which we will use the first folder as training data and second folder as testing data. The main task was to match iris correctly to its belonged class.
+
+Before the the main task, the first step is image preprocessing which tranforms the image into a form that can be conveniently used in later steps. This preprocessing step leads to identification of area of interest(the iris region), transformation of the region into a rectangle that's easy to analyze, enhanced image with high contrast and removed noises like eyelashes. 
+
+Next, we extract features from the preprocessed images with the method defined in Ma'S paper using the same parameters. It combines Gabor Filter and a modulating function that can best capture the texture of each iris. It uses two channels of filters, and each picture finally results in a feature vector of length 1536.
+
+After capturing the features, we will maximize the class separation with LDA and match iris with class number. 
+
+We will evaluate the performance of the overall method using correct recognition rate (CRR) and ROC curve.
+
+II. Limitation of current design
+
+The accuracy rate we obtained is around 75%, there is still room for improvement. 
+
+Fisrt of all, the data we have is limited; therefore, enlarging the sample size will test this design in a more comprehensiive way. 
+
+Second, in the preprocessing part, we did not detect eyelid nor did we remove it in the normalization procesure. This potentially has a negative impact on the performance. 
+
+Third, we tested different parameters and thresholds in the irislocalization, and found that adjusting it could influence the results. Therefore, by finding the best overall parameter, the result can also be optimized. 
+
+Fourth, this experiment design does not have the ability to identify fake iris.
+
+III. Function descriptions and Peer evaluation
